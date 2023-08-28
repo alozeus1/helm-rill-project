@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+data:
+  config.json: |
+    {
+      "environment" : "{{ .Values.environment }}",
+      "dataDir" : "/data",
+      "domain" : "{{ .Values.domain }}"
+    }
+

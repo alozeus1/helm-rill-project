@@ -1,0 +1,31 @@
+# templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: rill-app
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: rill-app
+  template:
+    metadata:
+      labels:
+        app: rill-app
+    spec:
+      containers:
+      - name: rill-app-container
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        resources:
+          requests:
+            storage: {{ .Values.ephemeralStorageSize }}
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: data-pvc
+      nodeSelector: {{ toYaml .Values.nodeSelector | nindent 10 }}
+      tolerations: {{ toYaml .Values.tolerations | nindent 8 }}
+      affinity: {{ toYaml .Values.affinity | nindent 8 }}
