@@ -2,10 +2,12 @@
 deploy statefulset application using helm chart
 
 
-RILL-APP HELM CHART
+RILL-APP HELM CHART:
+
 This Helm chart deploys the rill-app application to a Kubernetes cluster. The chart is meticulously designed to cater to different environments such as staging and production, ensuring smooth deployments across different stages of your development process.
 
 FEATURES:
+
 Stateful Application Deployment: Allows for stable, persistent storage.
 Environment-Specific Configurations: Separate value files for different environments such as staging and production.
 Node Specific Scheduling: Ensures pods are scheduled on nodes with specific labels.
@@ -34,6 +36,7 @@ Configuration
 This chart offers a multitude of configuration options. Check values.yaml for default configurations. For environment-specific overrides, refer to values.stage.yaml and values.prod.yaml.
 
 KEY CONTRIBUTION:
+
 Image: Adjust the application's image and tag.
 Ephemeral Storage: Size of the ephemeral storage required for the application.
 Persistent Volume: Configuration for persistent volume like size and storage class.
@@ -53,9 +56,10 @@ Production: Use values.prod.yaml
 Copy code
 helm install -f values.prod.yaml rill-app-prod-release .
 
-
 CONTRIBUTION:
+
 We appreciate your contributions! Please submit a pull request, and our maintainers will review your changes.
 
-LICENSE
+LICENSE:
+
 This project is licensed under the MIT License. See the LICENSE file for more details.
